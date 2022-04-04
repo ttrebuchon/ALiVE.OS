@@ -783,12 +783,6 @@ switch(_operation) do {
                     };
                 };
 
-                if (count _profiles == 0) then {
-                	{
-                		if (count _x > 0) exitwith {_profiles = _x};
-                	} foreach [_armored,_mechanized,_motorized,_infantry];
-                };
-
                 if (!isnil "_rtb" && {["ALiVE_mil_ATO"] call ALiVE_fnc_IsModuleAvailable}) exitwith {
 
                 	_ATOtype = "CAS";
@@ -810,6 +804,15 @@ switch(_operation) do {
 
                     _attackedE pushback [_target,_pos,_section,time];
                     [_logic,"attackedentities",_attackedE] call ALiVE_fnc_HashSet;
+                };
+				
+				if (count _profiles == 0) then {
+                	if (!isNil "_rtb") then {
+						_rtb = nil;
+					};
+					{
+                		if (count _x > 0) exitwith {_profiles = _x};
+                	} foreach [_armored,_mechanized,_motorized,_infantry];
                 };
 
                 if (count _profiles > 0) then {
@@ -991,7 +994,7 @@ switch(_operation) do {
 					_synchronized = true;
 				};
 			} forEach _objectiveIDsToCheck;
-            
+			
             _result = _synchronized;
         };
 
@@ -1272,7 +1275,7 @@ switch(_operation) do {
                 private _objective = [_logic,"getobjectivebyid", _objectiveID] call ALiVE_fnc_OPCOM;
                 private _debug = [_logic,"debug",false] call ALiVE_fnc_HashGet;
 
-                private _previousTacomState = [_objective,"tacom_state"] call ALiVE_fnc_hashGet;
+                private _previousTacomState = [_objective,"tacom_state",""] call ALiVE_fnc_hashGet;
 
                 [_objective,"tacom_state", "none"] call AliVE_fnc_HashSet;
                 [_objective,"opcom_state", "unassigned"] call AliVE_fnc_HashSet;
@@ -1526,7 +1529,7 @@ switch(_operation) do {
         };
 
         case "addTask": {
-            _operation = _args select 0;
+			_operation = _args select 0;
             _pos = _args select 1;
             _section = _args select 2;
             _TACOM_FSM = [_logic,"TACOM_FSM"] call ALiVE_fnc_HashGet;
