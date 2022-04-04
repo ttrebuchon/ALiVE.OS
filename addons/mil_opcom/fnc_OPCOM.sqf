@@ -966,6 +966,7 @@ switch(_operation) do {
             // } foreach _pendingOrders;
 
             private _ordersToRemove = [];
+			private _objectiveIDsToCheck = [];
             {
                 _x params ["_pos","_profileID","_objectiveID","_time"];
 
@@ -974,6 +975,7 @@ switch(_operation) do {
 
                 if (_dead || { _timeout } || { _ProfileID == _ProfileIDInput }) then {
                     _ordersToRemove pushback _foreachindex;
+					_objectiveIDsToCheck pushback _objectiveID;
                     private _objectiveFound = _pendingOrders findIf { _objectiveID == (_x select 2) };
                     if (_objectiveFound == -1) then {
                         _synchronized = true; 
@@ -982,6 +984,13 @@ switch(_operation) do {
             } foreach _pendingOrders;
 
             [_pendingOrders, _ordersToRemove] call ALiVE_fnc_deleteAtMany;
+			_objectiveIDsToCheck = _objectiveIDsToCheck arrayIntersect _objectiveIDsToCheck;
+			{
+				private _objectiveID = _x;
+				if ((_pendingOrders findIf { _objectiveID == _x select 2 }) == -1) exitWith {
+					_synchronized = true;
+				};
+			} forEach _objectiveIDsToCheck;
             
             _result = _synchronized;
         };
