@@ -4,7 +4,7 @@
 item0[] = {"react",0,250,-39.125454,36.278599,50.874546,86.278595,0.000000,"react"};
 item1[] = {"killed",4,218,-176.596497,35.791580,-86.596497,85.791595,50.000000,"killed"};
 item2[] = {"end1",1,250,-381.218628,39.896168,-291.218750,89.896164,0.000000,"end1"};
-item3[] = {"new_task",4,218,-39.236374,128.021286,50.763626,178.021286,10.000000,"new task"};
+item3[] = {"new_task",4,4314,-39.236374,128.021286,50.763626,178.021286,10.000000,"new task"};
 item4[] = {"",7,210,-134.446793,239.584732,-126.446762,247.584732,0.000000,""};
 item5[] = {"_",2,250,442.422791,174.427216,532.422729,224.427200,0.000000,""};
 item6[] = {"pickup",4,218,-100.407379,333.143829,-10.407383,383.143829,0.000000,"pickup"};
@@ -161,8 +161,8 @@ link89[] = {63,64};
 link90[] = {64,4};
 link91[] = {65,66};
 link92[] = {66,15};
-globals[] = {0.000000,0,0,0,0,640,480,1,43,6316128,1,371.356018,1159.771484,1112.688721,328.706665,889,884,1};
-window[] = {2,-1,-1,-1,-1,867,130,1390,130,3,907};
+globals[] = {0.000000,0,0,0,0,640,480,1,43,6316128,1,-282.473541,602.094360,944.159363,-18.573626,1143,1244,1};
+window[] = {2,-1,-1,-1,-1,867,130,1390,130,3,1161};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -261,7 +261,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -339,7 +340,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -668,7 +670,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -772,7 +775,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -864,7 +868,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -979,7 +984,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1065,7 +1071,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1154,7 +1161,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1231,7 +1239,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1292,7 +1301,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1396,7 +1406,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1469,7 +1480,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1536,7 +1548,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1599,7 +1612,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1649,7 +1663,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1742,7 +1757,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1766,6 +1782,24 @@ class FSM
                                          "	params [""_chopper"",""_alt""];" \n
                                          "	sleep 1;" \n
                                          "    _chopper flyinheight _alt;" \n
+                                         "	/*if (_alt >= 50) then {" \n
+                                         "		// Wait until it's at the appropriate height only" \n
+                                         "		// if it's a valid flyInHeight value." \n
+                                         "		private [""_startTime"", ""_diff""];" \n
+                                         "		_startTime = time;" \n
+                                         "		waitUntil {" \n
+                                         "			_diff = _alt - ((getPosATL _chopper) select 2);" \n
+                                         "			(_diff <= 1 || _diff >= -1) || ((time - _startTime) > 20);" \n
+                                         "		};" \n
+                                         "		if (_diff <= 1 || _diff >= -1) then {" \n
+                                         "			// It didn't time out and it is now in position." \n
+                                         "			" \n
+                                         "			// Now make sure it wasn't tasked somewhere else in the meantime." \n
+                                         "			if ((_chopper getVariable ["""", """"]) == """") exitWith {};" \n
+                                         "" \n
+                                         "			if " \n
+                                         "		};" \n
+                                         "	};*/" \n
                                          "};"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -1813,7 +1847,8 @@ class FSM
                          "        } else {" \n
                          "            [[_chopper,""Go!. Go! Go!"",""side""],""NEO_fnc_messageBroadcast"",true,false] spawn BIS_fnc_MP;" \n
                          "        };        " \n
-                         "};"/*%FSM</STATEINIT""">*/;
+                         "};" \n
+                         "_chopper enableAIFeature [""PATH"", false];"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -1843,7 +1878,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1914,7 +1950,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -1995,7 +2032,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -2058,7 +2096,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -2113,7 +2152,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -2264,7 +2304,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
@@ -2323,7 +2364,8 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!isNil { _chopper getVariable ""NEO_radioTransportNewTask"" }" \n
                                          ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
+                                        action=/*%FSM<ACTION""">*/"_chopper enableAIFeature [""PATH"", true];" \n
+                                         "_task = _chopper getVariable ""NEO_radioTransportNewTask"" select 0;" \n
                                          "_pos = _chopper getVariable ""NEO_radioTransportNewTask"" select 1;" \n
                                          "_player = _chopper getVariable ""NEO_radioTransportNewTask"" select 3;" \n
                                          "" \n
