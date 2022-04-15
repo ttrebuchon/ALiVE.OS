@@ -1343,10 +1343,6 @@ switch(_operation) do {
                  _airClusters = [(ALIVE_clustersMil select 2), _airspace] call ALIVE_fnc_clustersInsideMarker;
             };
 
-            if (count _airClusters == 0) exitWith {
-                ["ATO - Warning no usable military buildings within airspace found, the ATO module for %1 may be incorrectly configured.", _faction] call ALiVE_fnc_dumpR;
-            };
-
             // Select the nearest cluster to the module or use Aircraft Carrier
             private _position = getposATL _logic;
 
@@ -1354,6 +1350,12 @@ switch(_operation) do {
             if ([_position] call ALiVE_fnc_nearShip) then {
                 _isCarrier = true;
             };
+
+            if (!_isCarrier && count _airClusters == 0) exitWith {
+                ["ATO - Warning no usable military buildings within airspace found, the ATO module for %1 may be incorrectly configured.", _faction] call ALiVE_fnc_dumpR;
+            };
+
+            
 
             // Sort clusters by distance
             private _tmp = [_airclusters,[_position],{_Input0 distance ([_x,"center",[0,0,0]] call ALiVE_fnc_HashGet)},"ASCEND"] call ALiVE_fnc_SortBy;
