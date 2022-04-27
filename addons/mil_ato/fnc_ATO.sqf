@@ -51,12 +51,12 @@ Tupolov
 #define DEFAULT_MIN_FUEL_STATE 0.5
 #define DEFAULT_RADAR_HEIGHT 105
 #define DEFAULT_WAIT_TIME 60
-#define WAIT_TIME_CAS 10
-#define WAIT_TIME_DCA 30
-#define WAIT_TIME_CAP 60
-#define WAIT_TIME_SEAD 60
-#define WAIT_TIME_Strike 90
-#define WAIT_TIME_Recce 90
+#define WAIT_TIME_CAS 5
+#define WAIT_TIME_DCA 1
+#define WAIT_TIME_CAP 10
+#define WAIT_TIME_SEAD 30
+#define WAIT_TIME_Strike 60
+#define WAIT_TIME_Recce 60
 #define CHANCE_OF_RESCUE 1
 
 
@@ -326,7 +326,7 @@ ALiVE_fnc_isAntiAir = {
     private _threats = getArray(configFile >> "CfgVehicles" >> _class >> "threat");
 
     private _cost = getNumber(configFile >> "CfgVehicles" >> _class >> "cost");
-
+    // MARK
     _result = (( _threats select 2 ) > 0.4) && ( _class iskindOf "LandVehicle" ) && ( _cost > 20000 );
 
     _result
@@ -4868,6 +4868,7 @@ switch(_operation) do {
             case "aircraftReturn": {
                 private _aircraftID = _eventFriendlyProfiles select 0;
                 private _aircraft = [_assets,_aircraftID] call ALiVE_fnc_hashGet;
+                // MARK
                 private _vehicleClass = [_aircraft,"vehicleClass"] call ALiVE_fnc_hashGet;
                 private _count = [_logic, "checkEvent", _event] call MAINCLASS;
                 if(_count == 0) exitWith {
