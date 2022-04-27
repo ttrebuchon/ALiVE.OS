@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, cas">*/
+/*%FSM<COMPILE "scriptedFSM.cfg, cas">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"react",0,250,-37.443069,45.098049,52.556931,95.098053,0.000000,"react"};
@@ -35,7 +35,7 @@ item30[] = {"nr_position",4,218,236.070999,501.930420,326.070984,551.930481,0.00
 item31[] = {"__9",2,250,236.055298,615.580505,326.055267,665.580505,0.000000,""};
 item32[] = {"",7,210,270.519501,264.013885,278.519501,272.013885,0.000000,""};
 item33[] = {"__10",2,250,488.254669,574.671753,578.254639,624.671753,0.000000,""};
-item34[] = {"at_base",4,218,583.062378,624.445740,673.062378,674.445740,0.000000,"at base"};
+item34[] = {"at_base",4,4314,583.062378,624.445740,673.062378,674.445740,0.000000,"at base"};
 item35[] = {"landed",4,218,473.211426,914.519531,563.211426,964.519531,0.000000,"landed"};
 item36[] = {"__11",2,250,299.612091,914.946777,389.612122,964.946777,0.000000,""};
 item37[] = {"_",4,218,108.018097,710.092529,198.018097,760.092468,0.000000,""};
@@ -98,8 +98,8 @@ link52[] = {37,27};
 link53[] = {38,20};
 link54[] = {39,40};
 link55[] = {40,20};
-globals[] = {0.000000,0,0,0,0,640,480,1,72,6316128,1,-236.860229,536.301147,929.424988,347.744324,1175,884,1};
-window[] = {2,-1,-1,-1,-1,971,234,1494,234,3,1193};
+globals[] = {0.000000,0,0,0,0,640,480,1,72,6316128,1,-54.651875,948.722412,1097.815186,35.517365,1175,1244,1};
+window[] = {2,-1,-1,-1,-1,999,234,1494,262,3,1193};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -646,7 +646,11 @@ class FSM
                          "[[_veh, format[""%1 is at parking position. Out."",_callsign],""side""],""NEO_fnc_messageBroadcast"",true,false] spawn BIS_fnc_MP;" \n
                          "" \n
                          "// move the loiter point to here" \n
-                         "[_grp,0] setWaypointPosition [_base,0];"/*%FSM</STATEINIT""">*/;
+                         "[_grp,0] setWaypointPosition [_base,0];" \n
+                         "" \n
+                         "_veh setVelocity [0, 0, 0];" \n
+                         "_veh setPosATL [_base select 0, _base select 1, (_base select 2) + 1];" \n
+                         "_veh setDir _dir;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -1408,9 +1412,9 @@ class FSM
                                         itemno = 34;
                                         priority = 0.000000;
                                         to="__3";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/"private _dist = _veh getVariable [""CS_PARK_DISTANCE"", 20];"/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"// Landed and waiting at starting position" \n
-                                         "((getposATL _veh) select 2) < 1 && {_veh distance _base < 20};"/*%FSM</CONDITION""">*/;
+                                         "((getposATL _veh) select 2) < 1 && {_veh distance _base < _dist};"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
