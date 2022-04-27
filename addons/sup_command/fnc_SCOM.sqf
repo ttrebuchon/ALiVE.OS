@@ -2544,7 +2544,7 @@ switch (_operation) do {
                     //-- Orders
                     switch (_opcom_state) do {
                         case "unassigned": {
-                            _opcomColor = "ColorWhite"
+                            _opcomColor = "ColorGrey"
                         };
                         case "idle": {
                             _opcomColor = "ColorYellow"
@@ -2677,7 +2677,7 @@ switch (_operation) do {
 
                 _intelTypeList ctrlRemoveAllEventHandlers "LBSelChanged";
 
-                _intelTypeList lbadd "White - Unassigned";
+                _intelTypeList lbadd "Grey - Unassigned";
                 _intelTypeList lbadd "Yellow - Idle";
                 _intelTypeList lbadd "Green - Reserve";
                 _intelTypeList lbadd "Red - Attack";
