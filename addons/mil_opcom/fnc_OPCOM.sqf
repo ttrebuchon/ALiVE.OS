@@ -215,6 +215,9 @@ switch(_operation) do {
                     [_handler,"pendingorders", []] call ALiVE_fnc_HashSet;
 
                     if (["ALiVE_mil_C2ISTAR"] call ALIVE_fnc_isModuleAvailable) then {
+                        if (canSuspend) then {
+                            waitUntil { !isNil "ALiVE_mil_C2ISTAR" };
+                        };
                         private _opcomIntelSides = [ALiVE_mil_C2ISTAR,"opcomIntelSides"] call ALiVE_fnc_C2ISTAR;
 
                         if (_side in _opcomIntelSides) then {
