@@ -1531,6 +1531,37 @@ switch(_operation) do {
                 };
         };
 
+        case "findReinforcementBases": {
+                _args params [["_limit", -1, [0]]];
+                _AO = [];
+                _FOB = [];
+                {
+                    private ["_state","_orders"];
+
+                    _orders = [_x,"opcom_orders",""] call ALiVE_fnc_HashGet;
+                    _state = [_x,"opcom_state",""] call ALiVE_fnc_HashGet;
+
+                    if (_orders in ["attack","defend"]) then {_AO pushback _x} else {
+                        if (_state in ["reserving","idle"]) then {
+                            _FOB pushback _x;
+                        };
+                    };
+                } foreach ([_logic,"objectives",[]] call ALiVE_fnc_HashGet);
+
+                if (count _FOB > 0 && {count _AO > 0}) then {
+                    _FOB = [_FOB,[[_AO select 0,"center",[0,0,0]] call ALiVE_fnc_HashGet],{_input0 distance ([_x,"center",[0,0,0]] call ALiVE_fnc_HashGet)},"ASCEND"] call ALiVE_fnc_SortBy;
+                };
+
+                if (_limit > 0 && {_limit < (count _FOB)}) then {
+                    _result = [];
+                    for "_i" from 0 to (_limit-1) do {
+                        _result pushBack (_FOB select _i);
+                    };
+                } else {
+                    _result = _FOB;
+                };
+        };
+
         case "addTask": {
 			_operation = _args select 0;
             _pos = _args select 1;
