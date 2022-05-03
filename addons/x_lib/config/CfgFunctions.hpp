@@ -746,6 +746,13 @@ class JSON
 	RECOMPILE;
 };
 
+class packBins
+{
+	file = "\x\alive\addons\x_lib\functions\data\fnc_packBins.sqf";
+	ext = ".sqf";
+	RECOMPILE;
+};
+
 class parseJSON
 {
 	file = "\x\alive\addons\x_lib\functions\data\fnc_parseJSON.sqf";
