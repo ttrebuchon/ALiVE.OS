@@ -1808,20 +1808,36 @@ switch(_operation) do {
                 // according to the type of reinforcement
                 // adjust wait time for creation of profiles
 
-                switch(_reinforcementType) do {
-                    case "AIR": {
+                // switch(_reinforcementType) do {
+                //     case "AIR": {
+                //         _waitTime = WAIT_TIME_AIR;
+                //         _eventType = "AIRDROP";
+                //     };
+                //     case "HELI": {
+                //         _waitTime = WAIT_TIME_HELI;
+                //         _eventType = "HELI_INSERT";
+                //     };
+                //     case "MARINE": {
+                //         _waitTime = WAIT_TIME_MARINE;
+                //         _eventType = "HELI_INSERT";
+                //     };
+                //     case "DROP": {
+                //         _waitTime = WAIT_TIME_DROP;
+                //         _eventType = "STANDARD";
+                //     };
+                // };
+
+                switch(_eventType) do {
+                    case "AIRDROP": {
                         _waitTime = WAIT_TIME_AIR;
-                        _eventType = "AIRDROP";
                     };
-                    case "HELI": {
+                    case "HELI_INSERT": {
                         _waitTime = WAIT_TIME_HELI;
-                        _eventType = "HELI_INSERT";
                     };
-                    case "MARINE": {
-                        _waitTime = WAIT_TIME_MARINE;
-                        _eventType = "HELI_INSERT";
+                    case "STANDARD": {
+                        _waitTime = WAIT_TIME_DROP;
                     };
-                    case "DROP": {
+                    default {
                         _waitTime = WAIT_TIME_DROP;
                         _eventType = "STANDARD";
                     };
@@ -1842,10 +1858,11 @@ switch(_operation) do {
 
                     if((time - _eventTime) > _waitTime) then {
 
-                        private ["_reinforcementPosition","_playersInRange","_paraDrop","_remotePosition","_airTrans","_noHeavy","_slingAvailable","_water","_AA","_newPos","_routeDistance","_routeDirection"];
+                        private ["_reinforcementPosition","_playersInRange","_paraDrop","_remotePosition","_airTrans","_noHeavy","_largeGroup","_slingAvailable","_water","_AA","_newPos","_routeDistance","_routeDirection"];
 
                         // Override delivery mechanism if there is water or AA or armored vehicles required
                         _noHeavy = _eventForceMechanised == 0 && _eventForceArmour == 0;
+                        _largeGroup = (_eventForceInfantry + _eventForceMotorised + _eventForceMechanised + _eventForceArmour) > 2;
 
                         _water = false; // water is in the way
 
@@ -1879,7 +1896,7 @@ switch(_operation) do {
                         if (_eventType == "AIRDROP" && !_noHeavy) then {_eventType = "STANDARD";};
 
                         // If its air drop and nothing heavy and sling available then switch to Heli Insert
-                        if (_eventType == "AIRDROP" && _noHeavy && _slingAvailable) then {_eventType = "HELI_INSERT";};
+                        if (_eventType == "AIRDROP" && _noHeavy && _slingAvailable && !_largeGroup) then {_eventType = "HELI_INSERT";};
 
                         // If OPCOM requested convoy but there's water - then heli insert
                         if (_eventType == "STANDARD" && _water && _noHeavy && count _airTrans > 0) then {_eventType = "HELI_INSERT";};
