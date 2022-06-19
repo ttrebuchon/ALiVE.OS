@@ -114,7 +114,7 @@ link54[] = {39,40};
 link55[] = {40,6};
 link56[] = {41,18};
 globals[] = {0.000000,0,0,0,0,640,480,1,97,6316128,1,-1220.084473,63.918762,-293.890564,-1271.430298,1634,1244,1};
-window[] = {2,-1,-1,-32000,-32000,1096,231,1986,181,3,1652};
+window[] = {2,-1,-1,-1,-1,941,26,1781,26,3,1652};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -165,6 +165,7 @@ class FSM
                          "" \n
                          "// DEBUG" \n
                          "private _buggedReinforcementsLock = false;" \n
+                         "private _buggedReinforcementsLock_Info = [];" \n
                          "// END DEBUG" \n
                          "" \n
                          "" \n
@@ -1093,11 +1094,11 @@ class FSM
                          "        // Reinforcement of air assets is handled by ATO" \n
                          "        _reinforce set [4,0]; // air" \n
                          "" \n
-                         "        _infantry = (_reinforce select 0) min 8;" \n
-                         "        _motorized = (_reinforce select 1) min 5;" \n
-                         "        _mechanized = (_reinforce select 2) min 10;" \n
-                         "        _armoured = ((_reinforce select 3) + (_reinforce select 6) + (_reinforce select 7)) min 10;" \n
-                         "        _air = (_reinforce select 4) min 5;" \n
+                         "        _infantry = ((_reinforce select 0) min 8) max 0;" \n
+                         "        _motorized = ((_reinforce select 1) min 5) max 0;" \n
+                         "        _mechanized = ((_reinforce select 2) min 10) max 0;" \n
+                         "        _armoured = (((_reinforce select 3) + (_reinforce select 6) + (_reinforce select 7)) min 10) max 0;" \n
+                         "        _air = ((_reinforce select 4) min 5) max 0;" \n
                          "        " \n
                          "        _position = [_base,""center""] call ALiVE_fnc_HashGet;" \n
                          "        _faction = selectRandom _factions;" \n
@@ -1160,13 +1161,14 @@ class FSM
                          "            };" \n
                          "" \n
                          "			if (!_didResetInProgress) then {" \n
-                         "				[_OPCOM_HANDLER, _opcomFSM, +_factions, _numberOfWavesFinished, _numberOfWaves, [_air, _infantry, _motorized],_airAssets, _originalReinforcementCounts] spawn {" \n
+                         "				[_opcom, _opcomFSM, +_factions, _numberOfWavesFinished, _numberOfWaves, [_air, _infantry, _motorized],_airAssets, _originalReinforcementCounts] spawn {" \n
                          "					_this params [""_OPCOM_HANDLER"", ""_opcomFSM"", ""_factions"", ""_numberOfWavesFinished"", ""_numberOfWaves"", ""_remaining"", ""_airAssets"", ""_originalReinforcementCounts""];" \n
                          "					while { true } do {" \n
                          "						systemChat format [""OPCOM FSM (%2) for OPCOM for factions %1 did not properly set _reinforcementsInProgress to false before exiting the loop!"", _factions, _opcomFSM];" \n
                          "						systemChat format [""[Waves: %1 / %2] [Remaining: %3] [AirAssets: %4]"", _numberOfWavesFinished, _numberOfWaves, _remaining, _airAssets];" \n
                          "						systemChat format [""Original Reinforcement Counts: %1"", _originalReinforcementCounts];" \n
                          "						_opcomFSM setFSMVariable [""_buggedReinforcementsLock"", true];" \n
+                         "						_opcomFSM setFSMVariable [""_buggedReinforcementsLock_Info"", +_this];" \n
                          "						sleep 10;" \n
                          "					};" \n
                          "				};" \n

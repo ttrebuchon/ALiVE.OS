@@ -3263,6 +3263,8 @@ switch(_operation) do {
                 {
 
                     _position = _positionSeries select _seriesIndex;
+                    // TODO: Is this feasible?
+                    // _profileWaypoint = [_position, 1, "TR UNLOAD", "LIMITED", 2, [], "COLUMN"] call ALIVE_fnc_createProfileWaypoint;
                     _profileWaypoint = [_position, 1, "MOVE", "LIMITED", 2, [], "COLUMN"] call ALIVE_fnc_createProfileWaypoint;
 
                     _profile = [ALIVE_profileHandler, "getProfile", _x] call ALIVE_fnc_profileHandler;

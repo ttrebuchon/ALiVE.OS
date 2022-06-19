@@ -33,7 +33,20 @@ _vehicleAssignments = _this select 0;
 _profile = _this select 1;
 _orderGetIn = if (count _this > 2) then {_this select 2} else {false};
 
+// DEBUG
+if (!canSuspend) then {
+    ERROR("profileVehicleAssignmentsToVehicleAssignments (needing suspension) called in environment without canSuspend!");
+    ["profileVehicleAssignmentsToVehicleAssignments (needing suspension) called in environment without canSuspend!"] call BIS_fnc_error;
+};
+// END DEBUG
+
 if(count (_vehicleAssignments select 1) > 0) then {
+    // DEBUG
+    if (!canSuspend) then {
+        ERROR("profileVehicleAssignmentsToVehicleAssignments called in environment without canSuspend and about to sleep!");
+        ["profileVehicleAssignmentsToVehicleAssignments called in environment without canSuspend and about to sleep!"] call BIS_fnc_error;
+    };
+    // END DEBUG
     {
         [_x, _profile,_orderGetIn] call ALIVE_fnc_profileVehicleAssignmentToVehicleAssignment;
         sleep 0.5;

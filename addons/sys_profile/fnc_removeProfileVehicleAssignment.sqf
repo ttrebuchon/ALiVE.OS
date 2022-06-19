@@ -39,6 +39,14 @@ if(_entityID in (_vehicleAssignments select 1)) then {
     private _profileActive = [_profileEntity,"active"] call ALIVE_fnc_hashGet;
     if (_profileActive) then {
         private _units = [_profileEntity,"units"] call ALIVE_fnc_hashGet;
+        // DEBUG
+        if !(_vehicleID in (_entityAssignments select 1)) then {
+            diag_log format ["[%1]: Trying to get non-existent vehicle ID ('%2') from entityAssignments (below): ", _fn_scriptName, _vehicleID];
+            [_entityAssignments] call ALIVE_fnc_inspectHash;
+            diag_log format ["[%1]: Entity ID is '%2', profileEntity is below: ", _fn_scriptName, _entityId];
+            [_profileEntity] call ALIVE_fnc_inspectHash;
+        };
+        // END DEBUG
         private _assignment = [_entityAssignments,_vehicleID] call ALIVE_fnc_hashGet;
         private _vehicleAssignment = [_assignment,_units] call ALIVE_fnc_profileVehicleAssignmentIndexesToUnits;
         private _vehicle = [_profileVehicle,"vehicle"] call ALIVE_fnc_hashGet;
