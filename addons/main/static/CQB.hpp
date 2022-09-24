@@ -1,6 +1,6 @@
 if (isnil "ALiVE_MIL_CQB_CUSTOM_STRATEGICHOUSES") then {ALiVE_MIL_CQB_CUSTOM_STRATEGICHOUSES = []};
 if (isnil "ALiVE_MIL_CQB_CUSTOM_UNITBLACKLIST") then {ALiVE_MIL_CQB_CUSTOM_UNITBLACKLIST = []};
-
+if (isnil "ALiVE_MIL_CQB_CUSTOM_STRATEGICPLATFORMS") then {ALiVE_MIL_CQB_CUSTOM_STRATEGICPLATFORMS = []};
 /*
  * CQB houses
  */
@@ -91,7 +91,14 @@ ALiVE_MIL_CQB_STRATEGICHOUSES = ALiVE_MIL_CQB_CUSTOM_STRATEGICHOUSES +
     "Land_vn_cave_04_01",
     "Land_vn_cave_05",
     "Land_vn_cave_06",
-    "Land_vn_cave_07"
+    "Land_vn_cave_07",
+    "Land_vn_o_platform_01",
+    "Land_vn_o_platform_02",
+    "Land_vn_o_platform_03",
+    "Land_vn_o_snipertree_01",
+    "Land_vn_o_snipertree_04",
+    "Land_vn_o_snipertree_02",
+    "Land_vn_o_snipertree_03"
 ];
 
 /*
@@ -171,6 +178,9 @@ ALiVE_MIL_CQB_UNITBLACKLIST = ALiVE_MIL_CQB_CUSTOM_UNITBLACKLIST +
     "I_C_Pilot_F",
     "I_C_Soldier_Camo_F",
 
+    // JETS
+    "B_Deck_Crew_F",
+
     //VN
     "vn_b_men_jetpilot_07",
     "vn_b_men_aircrew_13",
@@ -213,6 +223,7 @@ ALiVE_MIL_CQB_UNITBLACKLIST = ALiVE_MIL_CQB_CUSTOM_UNITBLACKLIST +
     "vn_b_men_army_23",
     "vn_b_men_aircrew_07",
     "vn_b_men_army_13",
+    "vn_b_men_army_26",
     "vn_b_men_army_14",
     "vn_b_men_aircrew_06",
     "vn_b_men_aircrew_17",
@@ -227,6 +238,86 @@ ALiVE_MIL_CQB_UNITBLACKLIST = ALiVE_MIL_CQB_CUSTOM_UNITBLACKLIST +
     "vn_o_men_aircrew_04",
     "vn_o_men_aircrew_03",
     "vn_o_men_aircrew_02",
-    "vn_b_men_army_26",
-    "vn_b_men_army_13"
+    "vn_b_men_aircrew_38",
+    "vn_b_men_aircrew_39",
+    "vn_b_men_aircrew_40",
+    "vn_b_men_aircrew_37",
+    "vn_b_men_aircrew_32",
+    "vn_b_men_aircrew_33",
+    "vn_b_men_aircrew_34",
+    "vn_b_men_aircrew_31",
+    "vn_b_men_aircrew_28",
+    "vn_b_men_aircrew_29",
+    "vn_b_men_aircrew_30",
+    "vn_b_men_aircrew_27",
+    "vn_b_men_aus_army_66_14",
+    "vn_b_men_aus_army_66_13",
+    "vn_b_men_aus_army_66_23",
+    "vn_b_men_aus_army_66_24",
+    "vn_b_men_aus_army_66_25",
+    "vn_b_men_aus_army_68_14",
+    "vn_b_men_aus_army_68_13",
+    "vn_b_men_aus_army_70_14",
+    "vn_b_men_aus_army_70_13",
+    "vn_b_men_aus_army_70_23",
+    "vn_b_men_aus_army_70_24",
+    "vn_b_men_aus_army_70_25",
+    "vn_b_men_nz_army_66_21",
+    "vn_b_men_nz_army_66_22",
+    "vn_b_men_rok_army_65_29",
+    "vn_b_men_rok_army_65_31",
+    "vn_b_men_rok_army_65_30",
+    "vn_b_men_rok_army_65_26",
+    "vn_b_men_rok_army_65_14",
+    "vn_b_men_rok_army_65_13",
+    "vn_b_men_rok_army_68_14",
+    "vn_b_men_rok_army_68_13",
+    "vn_b_men_rok_army_68_23",
+    "vn_b_men_rok_army_68_24",
+    "vn_b_men_rok_army_68_25",
+    "vn_b_men_rok_army_68_29",
+    "vn_b_men_rok_army_68_30",
+    "vn_b_men_rok_army_68_26",
+    "vn_b_men_rok_marine_65_14",
+    "vn_b_men_rok_marine_65_13",
+    "vn_b_men_rok_marine_65_29",
+    "vn_b_men_rok_marine_65_31",
+    "vn_b_men_rok_marine_65_30",
+    "vn_b_men_rok_marine_68_14",
+    "vn_b_men_rok_marine_68_13",
+    "vn_b_men_rok_marine_68_29",
+    "vn_b_men_rok_marine_68_31",
+    "vn_b_men_rok_marine_68_30",
+    "vn_i_men_rla_14",
+    "vn_i_men_rla_13",
+    "vn_i_men_rla_25",
+    "vn_i_men_rla_24",
+    "vn_i_men_rla_23",
+    "vn_o_men_pl_18",
+    "vn_o_men_pl_20",
+    "vn_o_men_pl_19"
+];
+
+
+ALiVE_MIL_CQB_STRATEGICPLATFORMS = ALiVE_MIL_CQB_CUSTOM_STRATEGICPLATFORMS +
+[
+    //VN
+    "Land_vn_b_tower_01",
+    "Land_vn_hut_tower_03",
+    "Land_vn_hut_tower_02",
+    "Land_vn_hut_tower_01",
+    "Land_vn_guardtower_01_f",
+    "Land_vn_guardtower_02_f",
+    "Land_vn_guardtower_04_f",
+    "Land_vn_o_tower_03",
+    "Land_vn_o_tower_02",
+    "Land_vn_o_tower_01",
+    "Land_vn_hut_tower_02",
+    "Land_vn_o_platform_01",
+    "Land_vn_o_platform_02",
+    "Land_vn_o_platform_03",
+    "Land_vn_o_snipertree_01",
+    "Land_vn_o_snipertree_04",
+    "Land_vn_o_snipertree_02",
+    "Land_vn_o_snipertree_03"
 ];
