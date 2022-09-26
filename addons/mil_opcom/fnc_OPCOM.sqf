@@ -987,7 +987,7 @@ switch(_operation) do {
             // } foreach _pendingOrders;
 
             private _ordersToRemove = [];
-            private ["_orderObjectiveID"];
+            private ["_profileOrdersObjectiveID"];
             {
                 _x params ["_pos","_profileID","_objectiveID","_time"];
 
@@ -996,7 +996,7 @@ switch(_operation) do {
 
                 if (_ProfileID == _ProfileIDInput) then {
                     _ordersToRemove pushback _foreachindex;
-                    _orderObjectiveID = _objectiveID;
+                    _profileOrdersObjectiveID = _objectiveID;
                 }
                 else {
                     if (_dead || { _timeout }) then {
@@ -1007,9 +1007,9 @@ switch(_operation) do {
 
             [_pendingOrders, _ordersToRemove] call ALiVE_fnc_deleteAtMany;
 
-            // If _orderObjectiveID is still nil, that means that there are no orders for this profile
+            // If _profileOrdersObjectiveID is still nil, that means that there are no orders for this profile
             // and therefore it must already be synchronized. 
-            if (isnil "_orderObjectiveID" || {_pendingOrders findIf { (_x select 2) == _orderObjectiveID } == -1}) then {
+            if (isnil "_profileOrdersObjectiveID" || {_pendingOrders findIf { (_x select 2) == _profileOrdersObjectiveID } == -1}) then {
                 _synchronized = true;
             }
             
