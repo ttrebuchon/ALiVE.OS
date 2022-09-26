@@ -987,36 +987,31 @@ switch(_operation) do {
             // } foreach _pendingOrders;
 
             private _ordersToRemove = [];
-            private _objectiveIDsToCheck = [];
+            private ["_orderObjectiveID"];
             {
                 _x params ["_pos","_profileID","_objectiveID","_time"];
 
                 private _dead = isnil { [ALiVE_profileHandler,"getProfile", _profileID] call ALiVE_fnc_profileHandler };
                 private _timeout = (time - _time) > 3600;
 
-                if (_dead || { _timeout } || { _ProfileID == _ProfileIDInput }) then {
+                if (_ProfileID == _ProfileIDInput) then {
                     _ordersToRemove pushback _foreachindex;
-                    _objectiveIDsToCheck pushback _objectiveID;
+                    _orderObjectiveID = _objectiveID;
+                }
+                else {
+                    if (_dead || { _timeout }) then {
+                        _ordersToRemove pushback _foreachindex;
+                    };
                 };
             } foreach _pendingOrders;
 
             [_pendingOrders, _ordersToRemove] call ALiVE_fnc_deleteAtMany;
 
-            //We have to check for any additional orders for the given
-            // objectives *after deleting from the array*,
-            // otherwise findIf just finds the exact same order
-            // that we were already looking at above (in "_x")
-            // and _synchronized is never set to true.
-
-            //Get rid of any duplicate objective IDs in the array
-            _objectiveIDsToCheck = _objectiveIDsToCheck arrayIntersect _objectiveIDsToCheck;
-            {
-                private _objectiveId = _x;
-                private _objectiveFound = _pendingOrders findIf { _objectiveID == (_x select 2) };
-                if (_objectiveFound == -1) then {
-                    _synchronized = true; 
-                };
-            } forEach _objectiveIDsToCheck;
+            // If _orderObjectiveID is still nil, that means that there are no orders for this profile
+            // and therefore it must already be synchronized. 
+            if (isnil "_orderObjectiveID" || {_pendingOrders findIf { (_x select 2) == _orderObjectiveID } == -1}) then {
+                _synchronized = true;
+            }
             
             _result = _synchronized;
         };
