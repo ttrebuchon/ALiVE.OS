@@ -966,28 +966,12 @@ switch(_operation) do {
         ///////////////////////////////////////////////////
 
         case "synchronizeorders": {
-            private _ProfileIDInput = _args;
-            private _pendingOrders = [_logic,"pendingorders", []] call ALiVE_fnc_HashGet;
-            private _synchronized = false;
-
-            // private _profilePendingOrderIndex = _pendingOrders findIf { (_x select 1) == _ProfileIDInput };
-            // if (_profilePendingOrderIndex == -1) exitwith {};
-
-            // private _profilePendingOrder = _pendingOrders deleteat _profilePendingOrderIndex;
-            // private _objective = _profilePendingOrder select 2;
-            // private _remainingOrders = [];
-
-            // {
-            //     _x params ["_pos","_profileID","_objectiveID","_time"];
-
-            //     if (_objectiveID == _objective) then {
-            //         private _dead = isnil { [ALiVE_profileHandler,"getProfile", _profileID] call ALiVE_fnc_profileHandler };
-            //         private _timeout = (time - _time) > 3600;
-            //     };
-            // } foreach _pendingOrders;
-
-            private _ordersToRemove = [];
-            private ["_profileOrdersObjectiveID"];
+            private ["_profileOrdersObjectiveID", "_ProfileIDInput", "_pendingOrders", "_synchronized", "_ordersToRemove"];
+            _ProfileIDInput = _args;
+            _pendingOrders = [_logic,"pendingorders", []] call ALiVE_fnc_HashGet;
+            _synchronized = false;
+            _ordersToRemove = [];
+            
             {
                 _x params ["_pos","_profileID","_objectiveID","_time"];
 
