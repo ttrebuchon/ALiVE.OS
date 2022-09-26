@@ -975,15 +975,14 @@ switch(_operation) do {
             {
                 _x params ["_pos","_profileID","_objectiveID","_time"];
 
-                private _dead = isnil { [ALiVE_profileHandler,"getProfile", _profileID] call ALiVE_fnc_profileHandler };
-                private _timeout = (time - _time) > 3600;
-
                 if (_ProfileID == _ProfileIDInput) then {
                     _ordersToRemove pushback _foreachindex;
                     _profileOrdersObjectiveID = _objectiveID;
                 }
                 else {
-                    if (_dead || { _timeout }) then {
+                    private _timeout = (time - _time) > 3600;
+                    
+                    if (_timeout || { isnil { [ALiVE_profileHandler,"getProfile", _profileID] call ALiVE_fnc_profileHandler } }) then {
                         _ordersToRemove pushback _foreachindex;
                     };
                 };
